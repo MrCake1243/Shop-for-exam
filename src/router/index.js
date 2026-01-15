@@ -1,15 +1,24 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '@/views/HomeView.vue';
-import CartView from '@/views/CartView.vue';
+import { createRouter, createWebHashHistory } from 'vue-router'
+import HomeView from '@/views/HomeView.vue'
+import CartView from '@/views/CartView.vue'
 
 const routes = [
-    { path: '/', component: HomeView },
-    { path: '/cart', component: CartView }
-];
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView
+  },
+  {
+    path: '/cart',
+    name: 'cart',
+    component: CartView
+  }
+]
 
+// ИЗМЕНЕНИЕ: используем createWebHashHistory для GitHub Pages
 const router = createRouter({
-    history: createWebHistory(),
-    routes
-});
+  history: createWebHashHistory(),
+  routes
+})
 
-export default router;
+export default router
