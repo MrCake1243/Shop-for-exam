@@ -10,7 +10,7 @@ npm install / yarn install
 Настройка переменных API_URL и API_KEY
 В файле apiClient.js (Я, к сожалению, не смог настроить .env, из-за него URL и Key не считывались)
 
-BASE_URL = *ваша ссылка*
+BASE_URL = *ваша ссылка без /docx*
 api_key: *ваш ключ*
 
 Начало разработки
