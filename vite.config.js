@@ -1,20 +1,36 @@
-
-import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vueDevTools from 'vite-plugin-vue-devtools'
+import path from 'path'
 
-// https://vite.dev/config/
 export default defineConfig({
-  base: '/Shop-for-exam/'
-  plugins: [
-    vue(),
-    vueDevTools(),
-  ],
+  plugins: [vue()],
+  
+  // Для GitHub Pages
+  base: '/Shop-for-exam/', // Замените на имя вашего репозитория на GitHub
+  
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    },
+      '@': path.resolve(__dirname, './src')
+    }
   },
+  
+  // Оптимизация сборки
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    rollupOptions: {
+      output: {
+        // Группировка файлов
+        manualChunks: {
+          'vendor': ['vue', 'pinia', 'vue-router'],
+          'ui': []
+        }
+      }
+    }
+  },
+  
+  server: {
+    port: 3000,
+    open: true
+  }
 })
